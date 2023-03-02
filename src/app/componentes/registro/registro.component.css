@@ -1,0 +1,39 @@
+#contenedor-registro {
+  background: var(--darkest-color);
+}
+
+#head_registro {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1.5em;
+}
+
+.registrate {
+  font-size: 2.5em;
+  color: whitesmoke;
+}
+
+#logo_registro {
+  width: 25%;
+}
+
+.inputReg {
+  color: var(--dark-color);
+  border-bottom: 1px solid var(--dark-color);
+}
+
+.inputReg::placeholder {
+  color: var(--dark-color);
+}
+
+.inputReg:focus {
+  border-bottom: 1px solid var(--orange-color);
+  color: var(--orange-color);
+}
+
+button:disabled {
+  background-color: #aaa;
+  letter-spacing: 0;
+  cursor: auto;
+}

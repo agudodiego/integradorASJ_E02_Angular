@@ -1,0 +1,32 @@
+#contenedor-login {
+  background: var(--dark-color);
+}
+
+.bienvenido {
+  font-size: 2.5em;
+}
+
+input::placeholder {
+  color: var(--darkest-color);
+}
+
+button:disabled {
+  background-color: #aaa;
+  letter-spacing: 0;
+  cursor: auto;
+}
+
+input:focus {
+  border-bottom: 1px solid var(--orange-color);
+  color: var(--orange-color);
+}
+
+/* SWEETALERT */
+
+.swal2-modal {
+  background-color: rgba(104, 104, 104, 0.865);
+  color: whitesmoke;
+}
+
+
+

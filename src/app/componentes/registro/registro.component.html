@@ -1,0 +1,32 @@
+<main id="contenedor-principal">
+  <div id="contenedor-registro">
+    <div id="head_registro">
+      <img id="logo_registro" src="assets/sapp_logo.svg" alt="logo s-app">
+      <h2 class="registrate">Registrate!</h2>
+    </div>
+
+    <form id="formRegistro" [formGroup]="formularioRegistro" autocomplete="off">
+
+      <input class="inputReg" type="text" placeholder="usuario" name="usuario" formControlName="usuario">
+      <div class="alerta" *ngIf="formularioRegistro.controls['usuario'].errors && formularioRegistro.controls['usuario'].dirty">
+        <p *ngIf="formularioRegistro.controls['usuario'].errors['required']">⛔ Campo requerido</p>
+        <p *ngIf="formularioRegistro.controls['usuario'].errors['minlength']">⛔ Longuitud minima 5 caracteres</p>
+      </div>
+
+      <input class="inputReg" type="password" placeholder="contraseña" name="pass" formControlName="pass">
+      <div class="alerta" *ngIf="formularioRegistro.controls['pass'].errors && formularioRegistro.controls['pass'].dirty">
+        <p *ngIf="formularioRegistro.controls['pass'].errors['required']">⛔ Campo requerido</p>
+        <p *ngIf="formularioRegistro.controls['pass'].errors['minlength']">⛔ Longuitud minima 8 caracteres</p>
+      </div>
+
+      <input class="inputReg" type="email" placeholder="email" name="email" formControlName="email">
+      <div class="alerta" *ngIf="formularioRegistro.controls['email'].errors && formularioRegistro.controls['email'].dirty">
+        <p *ngIf="formularioRegistro.controls['email'].errors['required']">⛔ Campo requerido</p>
+        <p *ngIf="formularioRegistro.controls['email'].errors['email']">⛔ Debe ser una direccion valida</p>
+      </div>
+
+      <button class="btnRegistrarse" [disabled]="formularioRegistro.invalid" (click)="registrarse()">registrarse</button>
+    </form>
+    <h3 class="txtCancelar" routerLink="/login" >cancelar</h3>
+  </div>
+</main>

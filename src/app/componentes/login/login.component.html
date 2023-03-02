@@ -1,0 +1,23 @@
+<main id="contenedor-principal">
+  <img id="logo_login" src="assets/sapp_logo.svg" alt="logo s-app">
+  <div id="contenedor-login">
+    <h2 class="bienvenido">Bienvenido</h2>
+    <form id="formLogin" [formGroup]="formularioLogin" autocomplete="off">
+
+      <input type="text" placeholder="usuario" name="usuario" formControlName="usuario">
+      <div class="alerta" *ngIf="formularioLogin.controls['usuario'].errors && formularioLogin.controls['usuario'].dirty">
+        <p *ngIf="formularioLogin.controls['usuario'].errors['required']">⛔ Campo requerido</p>
+        <p *ngIf="formularioLogin.controls['usuario'].errors['minlength']">⛔ Longuitud minima 5 caracteres</p>
+      </div>
+
+      <input type="password" placeholder="contraseña" name="pass" formControlName="pass">
+      <div class="alerta" *ngIf="formularioLogin.controls['pass'].errors && formularioLogin.controls['pass'].dirty">
+        <p *ngIf="formularioLogin.controls['pass'].errors['required']">⛔ Campo requerido</p>
+        <p *ngIf="formularioLogin.controls['pass'].errors['minlength']">⛔ Longuitud minima 8 caracteres</p>
+      </div>
+
+      <button class="btnIngresar" [disabled]="formularioLogin.invalid" (click)="loguearse()">ingresar</button>
+    </form>
+    <h3 class="txtRegistro" routerLink="/registro">registrarse</h3>
+  </div>
+</main>

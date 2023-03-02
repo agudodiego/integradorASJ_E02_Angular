@@ -1,0 +1,10 @@
+<div id="sectorBusqueda">
+  <div id="buscador">
+    <input id="inputBuscador" type="text" placeholder="Buscar serie" autocomplete="off" #inputBusqueda>
+    <img id="lupa" src="assets/lupa.svg" alt="lupa" (click)="buscarSerie()">
+  </div>
+
+  <div id="cont-card-busqueda">
+    <app-lista-series-buscadas [seriesAPintar]="series"></app-lista-series-buscadas>
+  </div>
+</div>

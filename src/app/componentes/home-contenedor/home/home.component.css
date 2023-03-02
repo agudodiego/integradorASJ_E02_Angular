@@ -1,0 +1,75 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  padding: 3em;
+}
+
+#logo {
+  width: 80px;
+}
+
+#usuario-logeado {
+  display: flex;
+  align-items: center;
+}
+
+#avatar {
+  width: 40px;
+  margin-right: .5em;
+}
+
+#btnLogout {
+  width: 30px;
+  cursor: pointer;
+}
+
+#nombre-usuario {
+  margin-right: 3em;
+  color: whitesmoke;
+}
+
+#contenedor-home {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url(/assets/cine2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 0;
+}
+
+#contenedor-usuario {
+  display: flex;
+  padding: 1em 3em;
+  position: relative;
+  overflow: hidden;
+}
+
+#rollo {
+  position: absolute;
+  right: -20%;
+  bottom: 0;
+  height: 100%;
+  opacity: 9%;
+  animation-name: rotacion;
+  animation-duration: 30s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes rotacion {
+  from{transform: rotateZ(0deg);}
+  to{transform: rotateZ(360deg);}
+}
+
+app-buscador {
+  width: 40%;
+}
+
+app-mis-series {
+  width: 60%;
+}
