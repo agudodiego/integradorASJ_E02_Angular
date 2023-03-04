@@ -1,8 +1,8 @@
 export class Plataforma {
 
-  constructor (id_plataforma: number,
-               plataforma: string,
-               url: string)
+  constructor (public id_plataforma: number,
+               public plataforma: string | null,
+               public url: string | null)
   {}
 
 }

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-registro',
@@ -10,7 +11,7 @@ export class RegistroComponent {
 
   formularioRegistro: FormGroup;
 
-  constructor(private construct: FormBuilder) {
+  constructor(private router: Router, private construct: FormBuilder) {
     this.formularioRegistro = construct.group({
       usuario: ['', Validators.compose([Validators.required, Validators.minLength(5)])],
       pass: ['', Validators.compose([Validators.required, Validators.minLength(8)])],
@@ -19,6 +20,7 @@ export class RegistroComponent {
   }
 
   registrarse() {
-    console.log('registrado')
+    console.log('registrado');
+    this.router.navigate(['/login']);
   }
 }

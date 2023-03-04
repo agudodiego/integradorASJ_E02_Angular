@@ -1,5 +1,5 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {ApiServiceService} from "../../../servicios/api-service.service";
+import {ApiService} from "../../../../services/api.service";
 
 @Component({
   selector: 'app-buscador',
@@ -11,7 +11,8 @@ export class BuscadorComponent {
   @ViewChild('inputBusqueda') inputBusqueda!: ElementRef<HTMLInputElement>;
 
   public series: any[] = [];
-  constructor( private apiService: ApiServiceService) { }
+
+  constructor( private apiService: ApiService ) { }
 
   buscarSerie() {
     const terminoBusqueda = this.inputBusqueda.nativeElement.value;
@@ -19,7 +20,6 @@ export class BuscadorComponent {
     this.apiService.getResultadosBusqueda(terminoBusqueda)
       .subscribe( (resp: any) => {
         this.series = resp;
-        console.log(this.series);
       });
 
     this.inputBusqueda.nativeElement.value = '';

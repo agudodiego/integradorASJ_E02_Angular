@@ -1,0 +1,64 @@
+#cards_seleccionadas {
+    width: max-content;
+    position: relative;
+    width: 210px;
+    height: 345px;
+    transition: all 300ms;
+}
+
+#cards_seleccionadas:hover {
+    transform: scale(1.05);
+    filter: drop-shadow(8px 6px 6px #ebebeb6a);
+}
+
+#imagen {
+    width: 100%;
+}
+
+#btnPlataforma {
+    position: absolute;
+    background-color: var(--darkest-color);
+    border: 1px solid whitesmoke;
+    color: whitesmoke;
+    width: max-content;
+    padding: .5em;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+#pieImagen{
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(41, 83, 83, 1);
+    width: 100%;
+    padding: 5px;
+    border-radius: 0 0 25px 0;
+}
+
+#mas {
+    text-align: center;
+    border-radius: 50%;
+    background-color: var(--orange-color);
+    border: 2px solid whitesmoke;
+    width: 40px;
+    height: 40px;
+    font-size: 2em;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#txtPie {
+    font-size: 2em;
+    font-weight: 700;
+    color: var(--orange-color);
+    margin-left: 5px;
+}
+
+/* borrar esto */
+h1 {
+    color:aliceblue
+}
