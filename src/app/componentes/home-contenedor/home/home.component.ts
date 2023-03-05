@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
+import { MisSeriesService } from 'src/app/services/mis-series.service';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +9,12 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent {
 
-  constructor(private router: Router) {
-  }
+  constructor(private router: Router,
+              private misSeriesService: MisSeriesService) { }
+
+  get switchModal(): boolean {
+    return this.misSeriesService.switchModal;
+  }            
 
   logOut() {
     this.router.navigate(['/login']);

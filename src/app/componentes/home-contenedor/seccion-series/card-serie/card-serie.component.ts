@@ -9,12 +9,16 @@ import { MisSeriesService } from 'src/app/services/mis-series.service';
 })
 export class CardSerieComponent {
 
-  // seriesDelUsuario: Serie[] = [];
-
   constructor( private misSeriesService: MisSeriesService) {}
 
   get series() {
     return this.misSeriesService.misSeries;
+  }
+
+  masInfo(serie: Serie) {
+    this.misSeriesService.switchearModal(true);
+    
+    this.misSeriesService.habilitarDetalleSerie(serie);
   }
 
 }

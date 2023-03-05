@@ -14,6 +14,7 @@ import { ApiService } from "./services/api.service";
 import { ListaSeriesBuscadasComponent } from './componentes/home-contenedor/seccion-busqueda/lista-series-buscadas/lista-series-buscadas.component';
 import { MisSeriesService } from "./services/mis-series.service";
 import { CardSerieComponent } from './componentes/home-contenedor/seccion-series/card-serie/card-serie.component';
+import { ModalComponent } from './componentes/home-contenedor/modal/modal.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { CardSerieComponent } from './componentes/home-contenedor/seccion-series
     BuscadorComponent,
     MisSeriesComponent,
     ListaSeriesBuscadasComponent,
-    CardSerieComponent
+    CardSerieComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

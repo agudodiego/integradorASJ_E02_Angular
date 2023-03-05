@@ -1,11 +1,11 @@
 <div id="cards_seleccionadas" *ngFor="let serie of series">
     <a *ngIf="serie.plataforma.id_plataforma != 1; else sinPlataforma" href="{{serie.plataforma.url}}" target="_blank" id="btnPlataforma">{{serie.plataforma.plataforma}}</a>
     <!-- ${serie.plataforma.id_plataforma != 1 ? `<a href="${serie.plataforma.url}" target="_blank" id="btnPlataforma">${serie.plataforma.plataforma}</a>` : `<a id="btnPlataforma">${serie.plataforma.plataforma}</a>`}   -->
-    <img *ngIf="serie.img_small; else sinImg" src="{{serie.img_small}}" alt="">
+    <img id="imgEfecto" *ngIf="serie.img_small; else sinImg" src="{{serie.img_small}}" alt="">
     <!-- ${serie.img_small ? `<img src="${serie.img_small}" alt="">` : `<img src="https://via.placeholder.com/210x297/CCC/FF0000/?text=${serie.titulo}" alt="">`} -->
     <div id="pieImagen">
         <p id="txtPie">T{{serie.temp_actual}}-E{{serie.episod_actual}}</p>
-        <div id="mas" data-id=${serie.id_serie}>+</div>
+        <div id="mas" (click)="masInfo(serie)">+</div>
     </div>
 </div>
 
@@ -15,6 +15,6 @@
 </ng-template>
 
 <ng-template #sinImg>
-    <img src="https://via.placeholder.com/210x297/CCC/FF0000/?text=Titulo" alt="">
+    <img id="imgEfecto" src="https://via.placeholder.com/210x297/CCC/FF0000/?text=Titulo" alt="">
     <!-- <img src="https://via.placeholder.com/210x297/CCC/FF0000/?text=${serie.titulo}" alt=""> -->
 </ng-template>

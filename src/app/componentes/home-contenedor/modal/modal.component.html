@@ -1,0 +1,61 @@
+<div id="detalleSerie">
+    <div id="close" (click)="cerrarModal()">X</div>
+    <div id="contenido">
+        <div id="detSerie" style="background-Image: url('{{mostrarDetalles.img_big}}')">
+            <div id="encabezado">
+                <p id="titulo">{{mostrarDetalles.titulo}}</p>
+                <p id="anio">{{mostrarDetalles.anio_lanzamiento}}</p>
+                <p id="genero">{{mostrarDetalles.genero}}</p>
+            </div>
+            <div *ngIf="mostrarDetalles.descripcion; else sinDet" id="pie" [innerHTML]="mostrarDetalles.descripcion" class="estilosDescripcion">
+            </div>
+        </div>
+
+        <div id="crud">
+
+            <div id="temporada">
+                <p>Temporada en curso</p>
+                <div>
+                    <div id="sumarT" class="btnCrud" (click)="sumarT()">+</div>
+                    <div id="restarT" class="btnCrud" (click)="restarT()">-</div>
+                    <div id="display">
+                        <p id="TA">{{mostrarDetalles.temp_actual}}</p> <p>/</p> <p id="TT">{{mostrarDetalles.temporadas}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="episodio">
+                <p>Episodios vistos</p>
+                <div>
+                    <div id="sumarE" class="btnCrud" (click)="sumarE()">+</div>
+                    <div id="restarE" class="btnCrud" (click)="restarE()">-</div>
+                    <div id="display">
+                        <p id="EA">{{mostrarDetalles.episod_actual}}</p> <p>/</p> <p id="ET">{{mostrarDetalles.episodios}}</p>
+                    </div>
+                </div>
+            </div>
+
+            <a *ngIf="mostrarDetalles.sitio_oficial; else sinSO" id="sitioOficial" [href]="mostrarDetalles.sitio_oficial" target="_blamk">Sitio Oficial</a>
+
+            <div id="plataforma">
+                <p>Plataforma</p>
+                <select name="selPlataforma" id="selPlataforma" [innerHTML]="sanitizer.bypassSecurityTrustHtml(plataformasHTML)">
+                </select>
+            </div>
+
+            <div id="accionesCrud">
+                <div id="btnGuardar" data-id="" (click)="guardar()">guardar</div>
+                <div id="btnEliminar" data-id="" (click)="eliminar()">eliminar</div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<ng-template #sinSO>
+    <a id="sitioOficial">Sitio Oficial</a>
+</ng-template>
+
+<ng-template #sinDet>
+    <div  id="pie" ></div>
+</ng-template>

@@ -1,5 +1,5 @@
   <div id="card-busqueda" *ngFor="let serie of seriesAPintar">
-    <img *ngIf="serie.show.image; else sinImg" src="{{serie.show.image.medium}}" alt="{{serie.show.name}}">
+    <img *ngIf="serie.show.image; else sinImg" [src]="serie.show.image.medium" [alt]="serie.show.name">
     <div id="card-busqueda-textos">
       <h3>{{serie.show.name}}</h3>
       <h5 *ngIf="serie.show.premiered; else sinAnio">{{serie.show.premiered.substring(0, 4)}}</h5>

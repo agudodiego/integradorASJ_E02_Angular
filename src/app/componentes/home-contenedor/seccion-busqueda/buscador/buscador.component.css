@@ -6,7 +6,8 @@
   padding-bottom: 2em;
   border-radius: 10px;
   height: 80vh;
-  background-color: #334756d2;
+  background: linear-gradient(180deg, rgba(51,71,86,1) 0%, rgba(0,0,0,0) 100%);
+  /* background-color: #334756d2; */
 }
 
 #buscador {
