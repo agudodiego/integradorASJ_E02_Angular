@@ -1,78 +1,37 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Plataforma } from '../model/Plataforma.class';
 import { Serie } from "../model/Serie.class";
 import { ApiService } from './api.service';
+import { UsuarioService } from './usuario.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MisSeriesService {
 
-  private _misSeries: Serie[] = [];
-  private _switchModal: boolean = false;
-  private _serieConDetalle!: Serie;
-  private _plataformas: Plataforma[] = [
-    {
-        "id_plataforma": 1,
-        "plataforma": "Sin Plataforma",
-        "url": ""
-    },
-    {
-        "id_plataforma": 2,
-        "plataforma": "cuevana",
-        "url": "https://www4.cuevana3.ch/"
-    },
-    {
-        "id_plataforma": 3,
-        "plataforma": "pelispedia",
-        "url": "https://pelispedia.one/"
-    },
-    {
-        "id_plataforma": 4,
-        "plataforma": "seriesw",
-        "url": "https://mindandfist.com/"
-    }
-  ];
+  url = 'http://localhost:8080/API/V1/series';
 
   private temporadas: number = 0;
   private episodios: number = 0;
   private anio: string = '';
   private descripcion: string = '';
 
-  constructor(private apiService: ApiService) { }
-
-  get misSeries(): Serie[] {
-    return [...this._misSeries]; // spread operator
+  private httpOptions() {
+    return {
+      headers: new HttpHeaders({
+        'content-type': 'application/json'
+      })
+    };
   }
 
-  get plataformas(): Plataforma[] {
-    return this._plataformas;
-  }
-
-  // ***************** SERIE DETALLADA ***********************
-
-  habilitarDetalleSerie(serie: Serie) {
-    this._serieConDetalle = serie;
-  }
-
-  get serieConDetalle() {
-    return this._serieConDetalle;
-  }
-
-  // *********************** MODAL ***************************
-
-  get switchModal(): boolean {
-    return this._switchModal;
-  }
-
-  switchearModal(cambio: boolean) {
-    this._switchModal = cambio;
-  }
+  constructor(private apiService: ApiService,
+    private usuarioService: UsuarioService,
+    private http: HttpClient) { }
 
   // *********************** SERIES ***************************
   agregarSerie(serie: any) {
 
-    //TODO validar si la serie ya existe (aca o en BD?)
     // valido que venga el año desde la API
     this.anio = this.validarAnio(serie.show.premiered);
 
@@ -81,7 +40,8 @@ export class MisSeriesService {
 
     // consulto los episodios y temporadas de la serie en cuestion y armo el objeo serie
     this.consultarEpisodiosYTemporadas(serie);
-  }
+
+  };
 
   private validarAnio(anio: string): string {
     if (anio) {
@@ -98,7 +58,7 @@ export class MisSeriesService {
   }
 
   private cortarDescripcion(descripcion: string): string {
-    
+
     if (descripcion != 'null' && descripcion.length > 254) {
       let stringAux: string = descripcion.substring(0, 249);
       let indiceUltimoPunto: number = stringAux.lastIndexOf('.');
@@ -122,9 +82,20 @@ export class MisSeriesService {
 
         let serieNueva = this.armarSerie(serie);
 
-        this._misSeries.unshift(serieNueva);
+        // agregar lista en BD
 
-        // console.log(this._misSeries)
+        const nombreUsuario = this.usuarioService.usuarioLogeado.usuario;
+        this.http.post(`${this.url}/${nombreUsuario}`, serieNueva, this.httpOptions())
+          .subscribe({
+            next: (resp) => {
+              console.log(resp)
+              // agrega la lista en el array que esta en local asi evito hacer un GET+
+              this.usuarioService.agregarSerieALista(serieNueva);
+            },
+            error: (err) => {
+              console.log(err);
+            }
+          });
       })
   }
 
@@ -154,5 +125,6 @@ export class MisSeriesService {
       0
     );
   }
+
 
 }

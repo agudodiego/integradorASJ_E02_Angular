@@ -5,7 +5,6 @@
       <h5 *ngIf="serie.show.premiered; else sinAnio">{{serie.show.premiered.substring(0, 4)}}</h5>
     </div>
     <div id="add"><img id="btnAdd" src="assets/add.svg" alt="add" (click)="agregarAMisSeries(serie)"></div>
-  <!--    <div id="add"><img id="btnAdd" data-id=${serie.show.id} src="../assets/add.svg" alt="add"></div>-->
   </div>
 
   <ng-template #sinImg>

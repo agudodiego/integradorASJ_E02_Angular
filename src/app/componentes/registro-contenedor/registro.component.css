@@ -37,3 +37,10 @@ button:disabled {
   letter-spacing: 0;
   cursor: auto;
 }
+
+/* SWEETALERT */
+
+.swal2-modal {
+  background-color: rgba(104, 104, 104, 0.865);
+  color: whitesmoke;
+}

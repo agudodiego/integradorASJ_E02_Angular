@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
-import { MisSeriesService } from 'src/app/services/mis-series.service';
+import { Usuario } from 'src/app/model/Usuario.class';
+import { HomeService } from 'src/app/services/home.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +12,24 @@ import { MisSeriesService } from 'src/app/services/mis-series.service';
 export class HomeComponent {
 
   constructor(private router: Router,
-              private misSeriesService: MisSeriesService) { }
+              private homeService: HomeService,
+              private usuarioService: UsuarioService) { }
+  
+  ngOnInit() {
+    
+  }
+
+  get usuario() {
+    return this.usuarioService.usuarioLogeado;
+  }
 
   get switchModal(): boolean {
-    return this.misSeriesService.switchModal;
+    return this.homeService.switchModal;
   }            
 
   logOut() {
+    const usuario = new Usuario(null, '', '', null, null);
+    this.usuarioService.setearUsuarioLogeado(usuario);
     this.router.navigate(['/login']);
   }
 }

@@ -1,7 +1,9 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { Plataforma } from 'src/app/model/Plataforma.class';
-import { MisSeriesService } from 'src/app/services/mis-series.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { HomeService } from 'src/app/services/home.service';
+import { UsuarioService } from 'src/app/services/usuario.service';
+import { Relacion } from 'src/app/model/Relacion.class';
 
 @Component({
   selector: 'app-modal',
@@ -15,12 +17,15 @@ export class ModalComponent {
   displayEpisod: any;
   selectPlataformas: any;
 
+  //MODAL
   plataformas: Plataforma[] = [];
   plataformasHTML: string = '';
   temporada_actual: number = 0;
   episodio_actual: number = 0;
   
-  constructor(private misSeriesService: MisSeriesService, public sanitizer: DomSanitizer) {}
+  constructor(private homeService: HomeService, 
+              private usuarioService: UsuarioService,
+              public sanitizer: DomSanitizer) {}
   
   ngOnInit(){
     this.displayTemp = document.getElementById('TA');
@@ -28,17 +33,17 @@ export class ModalComponent {
     this.displayEpisod = document.getElementById('EA');
     this.episodio_actual = Number(this.displayEpisod.textContent);
     this.selectPlataformas = document.getElementById('selPlataforma');
-    this.plataformas = this.misSeriesService.plataformas;
+    this.plataformas = JSON.parse(sessionStorage.getItem('plataformas')!);
     this.plataformasHTML = this.generarPlataformasHTML();    
   }
   
   get mostrarDetalles() {
-    return this.misSeriesService.serieConDetalle;
+    return this.usuarioService.serieConDetalle;
   }
   
   // ************ BOTONES MODAL ************
   cerrarModal() {
-    this.misSeriesService.switchearModal(false);
+    this.homeService.switchearModal(false);
   }
 
   sumarT() {
@@ -83,15 +88,34 @@ export class ModalComponent {
 
   // TODO este metodo envia la info al servicio (UPDATE)
   guardar() {
-    console.log('gurdar cambios')
-    console.log('episodioNuevo: ',this.episodio_actual)
-    console.log('temporadaNueva: ',this.temporada_actual)
-    console.log('plataforma: ',this.selectPlataformas.value)
-    this.misSeriesService.switchearModal(false);
+    console.log('guardar serie')  
+    const relacion = this.armarObjetoRelacion(true);
+    this.usuarioService.actualizarRelacion(relacion);// .subscribe
+    this.homeService.switchearModal(false);
   }
-
+  
   eliminar() {
     console.log('eliminar serie')  
-    this.misSeriesService.switchearModal(false); 
+    const relacion = this.armarObjetoRelacion(false);
+    this.usuarioService.actualizarRelacion(relacion);// .subscribe
+    this.homeService.switchearModal(false); 
+  }
+
+  armarObjetoRelacion(onOff: boolean): Object {
+    const plat = this.plataformas.find((p)=> p.plataforma == this.selectPlataformas.value);
+    const idUsuario = this.usuarioService.usuarioLogeado.id_usuario;
+    const idSerie = this.mostrarDetalles.id_serie;
+
+    const relacion = {
+      usuario: {id_usuario: idUsuario},
+      serie: {id_serie: idSerie},
+      temp_actual: this.temporada_actual,
+      episod_actual: this.episodio_actual,
+      activa: onOff,
+      plataforma: plat
+    }
+
+    console.log(relacion);
+    return relacion;
   }
 }
