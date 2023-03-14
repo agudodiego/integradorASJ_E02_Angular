@@ -97,7 +97,15 @@ export class ModalComponent {
   eliminar() {
     console.log('eliminar serie')  
     const relacion = this.armarObjetoRelacion(false);
-    this.usuarioService.actualizarRelacion(relacion);// .subscribe
+    this.usuarioService.actualizarRelacion(relacion)
+          .subscribe({
+          next: (resp)=>{
+            if (resp != null) {
+              console.log('borrada en base')
+              this.usuarioService.borrarSerieEnLista(resp);
+            }
+          },
+          error: (error)=> {console.log(error)}});// .subscribe
     this.homeService.switchearModal(false); 
   }
 
@@ -107,8 +115,8 @@ export class ModalComponent {
     const idSerie = this.mostrarDetalles.id_serie;
 
     const relacion = {
-      usuario: {id_usuario: idUsuario},
-      serie: {id_serie: idSerie},
+      id_usuario: idUsuario,
+      id_serie: idSerie,
       temp_actual: this.temporada_actual,
       episod_actual: this.episodio_actual,
       activa: onOff,

@@ -4,8 +4,8 @@ import { Usuario } from "./Usuario.class";
 
 export class Relacion {
 
-    constructor(public usuario: Usuario,
-                public serie: Serie,
+    constructor(public id_usuario: number,
+                public id_serie: number,
                 public temp_actual: number,
                 public episod_actual: number,
                 public activa: boolean,

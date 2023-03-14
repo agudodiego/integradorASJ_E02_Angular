@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { Relacion } from '../model/Relacion.class';
 import { Serie } from '../model/Serie.class';
 import { Usuario } from '../model/Usuario.class';
 
@@ -34,6 +35,25 @@ export class UsuarioService {
   agregarSerieALista(serie: Serie) {
     this._usuarioLogeado.usuarioSeries!.unshift(serie);
   }
+
+  borrarSerieEnLista(relacion: any) {
+    let resultado = this._usuarioLogeado.usuarioSeries!.filter((serie) => serie.id_serie != relacion.id_serie);
+    this._usuarioLogeado.usuarioSeries = resultado;
+  }
+
+  // modificarSerieEnLista(relacion: any) {
+  //   this._usuarioLogeado.usuarioSeries!.forEach((s=> {
+  //     if (s.id_serie == relacion.id_serie) {
+  //       s.id_serie = relacion.id_serie,
+  //       s.temp_actual = relacion.temp_actual,
+  //       s.episod_actual = relacion.episod_actual,
+  //       s.activa = relacion.activa,
+  //       s.plataforma = relacion.plataforma
+  //     }
+  //   }))
+  //   console.log('--------> ', relacion)
+  //   console.log('--------> ', this._usuarioLogeado.usuarioSeries)
+  // }
 
   get seriesDelUsuario(): Serie[] {
     return this._usuarioLogeado.usuarioSeries!;
@@ -70,7 +90,7 @@ export class UsuarioService {
   }
 
   actualizarRelacion(relacion: Object) {
-    return this.http.post(`${this.url}/relaciones`, relacion, this.httpOptions())
+    return this.http.put(`${this.url}/relaciones`, relacion, this.httpOptions())
             .pipe(catchError(this.handlerException));
   }
 }
