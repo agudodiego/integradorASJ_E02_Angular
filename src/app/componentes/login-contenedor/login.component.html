@@ -1,11 +1,12 @@
 <main id="contenedor-principal">
-  <img id="logo_login" src="assets/sapp_logo.svg" alt="logo s-app">
-  <div id="contenedor-login">
+  <img id="logo_login" src="assets/sapp_logo.svg" alt="logo s-app" class="animate__animated animate__backInDown">
+  <div id="contenedor-login" class="animate__animated animate__fadeIn">
     <h2 class="bienvenido">Bienvenido</h2>
     <form id="formLogin" [formGroup]="formularioLogin" autocomplete="off">
 
       <input type="text" placeholder="usuario" name="usuario" formControlName="usuario">
-      <div class="alerta" *ngIf="formularioLogin.controls['usuario'].errors && formularioLogin.controls['usuario'].dirty">
+      <div class="alerta"
+        *ngIf="formularioLogin.controls['usuario'].errors && formularioLogin.controls['usuario'].dirty">
         <p *ngIf="formularioLogin.controls['usuario'].errors['required']">⛔ Campo requerido</p>
         <p *ngIf="formularioLogin.controls['usuario'].errors['minlength']">⛔ Longuitud minima 5 caracteres</p>
       </div>

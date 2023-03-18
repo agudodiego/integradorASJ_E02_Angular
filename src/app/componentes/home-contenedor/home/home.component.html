@@ -1,5 +1,7 @@
+<div id="loader" *ngIf="isLoading">
+  <img src="../assets/rollo_serie.svg" alt="" id="loadingRollo">
+</div>
 <main id="contenedor-home">
-
   <header>
     <img id="logo" src="assets/sapp_logo.svg" alt="logo s-app">
     <div id="usuario-logeado">
@@ -20,5 +22,5 @@
 
   <app-modal *ngIf="switchModal"></app-modal>
 
-  </main>
+</main>
 

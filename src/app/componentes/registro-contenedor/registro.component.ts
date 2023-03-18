@@ -36,13 +36,24 @@ export class RegistroComponent {
 
     this.usuarioService.registrarUsuario(usuario)
       .subscribe({
-        next: (resp)=> {
-          // console.log(resp)
-          Swal.fire('Usuario Registrado con Éxito!');
+        next: (resp) => {
+          Swal.fire(
+            {
+              title: 'Usuario Registrado con Éxito!',
+              confirmButtonColor: '#FF4C29',
+              background: '#ccc'
+            }
+          );
           this.router.navigate(['/login']);
         },
-        error: (err)=> {
-          Swal.fire('Credenciales incorrectas');
+        error: (err) => {
+          Swal.fire(
+            {
+              title: 'El usuario ya existe',
+              confirmButtonColor: '#FF4C29',
+              background: '#ccc'
+            }
+          );
           this.formularioRegistro.reset();
           console.log(err)
         }

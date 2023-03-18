@@ -1,8 +1,6 @@
-<div id="cards_seleccionadas" *ngFor="let serie of series">
+<div id="cards_seleccionadas" *ngFor="let serie of series" class="animate__animated animate__fadeIn">
     <a *ngIf="serie.plataforma.id_plataforma != 1; else sinPlataforma" href="{{serie.plataforma.url}}" target="_blank" id="btnPlataforma">{{serie.plataforma.plataforma}}</a>
-    <!-- ${serie.plataforma.id_plataforma != 1 ? `<a href="${serie.plataforma.url}" target="_blank" id="btnPlataforma">${serie.plataforma.plataforma}</a>` : `<a id="btnPlataforma">${serie.plataforma.plataforma}</a>`}   -->
     <img id="imgEfecto" *ngIf="serie.img_small; else sinImg" src="{{serie.img_small}}" alt="">
-    <!-- ${serie.img_small ? `<img src="${serie.img_small}" alt="">` : `<img src="https://via.placeholder.com/210x297/CCC/FF0000/?text=${serie.titulo}" alt="">`} -->
     <div id="pieImagen">
         <p id="txtPie">T{{serie.temp_actual}}-E{{serie.episod_actual}}</p>
         <div id="mas" (click)="masInfo(serie)">+</div>
@@ -11,10 +9,8 @@
 
 <ng-template #sinPlataforma>
     <a id="btnPlataforma">Sin Plataforma</a>
-    <!-- <a id="btnPlataforma">{{serie.plataforma.plataforma}}</a> -->
 </ng-template>
 
 <ng-template #sinImg>
-    <img id="imgEfecto" src="https://via.placeholder.com/210x297/CCC/FF0000/?text=Titulo" alt="">
-    <!-- <img src="https://via.placeholder.com/210x297/CCC/FF0000/?text=${serie.titulo}" alt=""> -->
+    <img id="imgEfecto" src="https://via.placeholder.com/210x297/CCC/FF0000/?text=No Image" alt="">
 </ng-template>

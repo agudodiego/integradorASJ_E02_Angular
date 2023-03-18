@@ -49,7 +49,13 @@ export class LoginComponent {
           this.router.navigate(['/home']);
         },
         error: (err) => {
-          Swal.fire('Credenciales incorrectas');
+          Swal.fire(
+            {
+              title: 'Credenciales incorrectas',
+              confirmButtonColor: '#FF4C29',
+              background: '#ccc'
+            }
+          );
           this.formularioLogin.reset();
           console.log(err)
         }

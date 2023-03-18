@@ -134,11 +134,12 @@ a {
 
 #selPlataforma {
     background-color: var(--dark-color);
+    border-radius: 8px;
     color: whitesmoke;
     width: 100%;
     height: 30px;
     border: none;
-    padding-left: .5em;
+    padding: 0 .5em;
 }
 
 .select-selected {

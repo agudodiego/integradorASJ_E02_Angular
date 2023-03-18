@@ -59,4 +59,34 @@
   overflow-y: scroll;
 }
 
+#start {
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+}
+
+#startText {
+  text-align: center;
+  color: #665;
+  font-size: 2em;
+}
+
+#arrowUp {
+  margin: auto;
+  width: 10%;
+  animation-name: desplazamiento;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes desplazamiento {
+  from{transform: translateY(0px);
+  opacity: 0;}
+  to{transform: translateY(-30px);
+  opacity: 1;}
+}
+
 

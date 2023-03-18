@@ -29,7 +29,14 @@ export class ListaSeriesBuscadasComponent {
     if (!yaEsta) {
       this.misSeriesService.agregarSerie(serie);
     } else {
-      Swal.fire('Ya tienes agregada la serie!');
+      Swal.fire({
+        position: 'top',
+        title: 'La serie ya está en tu lista!!',
+        showConfirmButton: false,
+        timer: 1500,
+        background: '#686868dd',
+        color: '#FF4C29'
+      })
     }  
     
   }

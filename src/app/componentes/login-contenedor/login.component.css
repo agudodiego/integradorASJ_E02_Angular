@@ -21,12 +21,5 @@ input:focus {
   color: var(--orange-color);
 }
 
-/* SWEETALERT */
-
-.swal2-modal {
-  background-color: rgba(104, 104, 104, 0.865);
-  color: whitesmoke;
-}
-
 
 

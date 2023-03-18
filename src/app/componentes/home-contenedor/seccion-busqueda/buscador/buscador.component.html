@@ -5,6 +5,10 @@
   </div>
 
   <div id="cont-card-busqueda">
-    <app-lista-series-buscadas [seriesAPintar]="series"></app-lista-series-buscadas>
+    <app-lista-series-buscadas [seriesAPintar]="series" *ngIf="series.length > 0"></app-lista-series-buscadas>
+    <div id="start" *ngIf="series.length == 0">
+      <img id="arrowUp" src="assets/arrow_up.png" alt="">
+      <p id="startText">Busca algo para ver!</p>
+    </div>
   </div>
 </div>

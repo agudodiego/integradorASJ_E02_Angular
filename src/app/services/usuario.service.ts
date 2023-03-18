@@ -41,19 +41,17 @@ export class UsuarioService {
     this._usuarioLogeado.usuarioSeries = resultado;
   }
 
-  // modificarSerieEnLista(relacion: any) {
-  //   this._usuarioLogeado.usuarioSeries!.forEach((s=> {
-  //     if (s.id_serie == relacion.id_serie) {
-  //       s.id_serie = relacion.id_serie,
-  //       s.temp_actual = relacion.temp_actual,
-  //       s.episod_actual = relacion.episod_actual,
-  //       s.activa = relacion.activa,
-  //       s.plataforma = relacion.plataforma
-  //     }
-  //   }))
-  //   console.log('--------> ', relacion)
-  //   console.log('--------> ', this._usuarioLogeado.usuarioSeries)
-  // }
+  modificarSerieEnLista(relacion: any) {
+    this._usuarioLogeado.usuarioSeries!.forEach(( s => {
+      if (s.id_serie == relacion.id_serie) {
+        s.id_serie = relacion.id_serie,
+        s.temp_actual = relacion.temp_actual,
+        s.episod_actual = relacion.episod_actual,
+        s.activa = relacion.activa,
+        s.plataforma = relacion.plataforma
+      }
+    }))
+  }
 
   get seriesDelUsuario(): Serie[] {
     return this._usuarioLogeado.usuarioSeries!;

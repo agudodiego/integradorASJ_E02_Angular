@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 import { Usuario } from 'src/app/model/Usuario.class';
 import { HomeService } from 'src/app/services/home.service';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -11,12 +11,16 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class HomeComponent {
 
+  isLoading: boolean = true;
+
   constructor(private router: Router,
-              private homeService: HomeService,
-              private usuarioService: UsuarioService) { }
-  
+    private homeService: HomeService,
+    private usuarioService: UsuarioService) { }
+
   ngOnInit() {
-    
+    setTimeout(() => {
+      this.isLoading = false;      
+    }, 500);
   }
 
   get usuario() {
@@ -25,7 +29,7 @@ export class HomeComponent {
 
   get switchModal(): boolean {
     return this.homeService.switchModal;
-  }            
+  }
 
   logOut() {
     const usuario = new Usuario(null, '', '', null, null);

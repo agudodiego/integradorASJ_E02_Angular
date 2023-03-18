@@ -1,3 +1,28 @@
+body {
+  background-color: #000;
+}
+
+#loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-image: url(/assets/cine2.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+#loadingRollo {
+  width: 8%;
+  opacity: 50%;
+  animation-name: rotacion;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -9,6 +34,7 @@ header {
 
 #logo {
   width: 80px;
+  margin-top: 15px;
 }
 
 #usuario-logeado {
@@ -67,9 +93,11 @@ header {
 }
 
 app-buscador {
-  width: 40%;
+  /* flex-grow: 1; */
+  width: 35%;
 }
 
 app-mis-series {
-  width: 60%;
+  /* flex-grow: 3; */
+  width: 65%;
 }

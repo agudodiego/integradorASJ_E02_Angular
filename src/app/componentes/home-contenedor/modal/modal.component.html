@@ -1,4 +1,4 @@
-<div id="detalleSerie">
+<div id="detalleSerie" class="animate__animated animate__fadeIn">
     <div id="close" (click)="cerrarModal()">X</div>
     <div id="contenido">
         <div id="detSerie" style="background-Image: url('{{mostrarDetalles.img_big}}')">
@@ -30,7 +30,7 @@
                     <div id="sumarE" class="btnCrud" (click)="sumarE()">+</div>
                     <div id="restarE" class="btnCrud" (click)="restarE()">-</div>
                     <div id="display">
-                        <p id="EA">{{mostrarDetalles.episod_actual}}</p> <p>/</p> <p id="ET">{{mostrarDetalles.episodios}}</p>
+                        <p id="EA">{{mostrarDetalles.episod_actual}}</p> <p>&nbsp;</p> <p id="ET">({{mostrarDetalles.episodios}})</p>
                     </div>
                 </div>
             </div>

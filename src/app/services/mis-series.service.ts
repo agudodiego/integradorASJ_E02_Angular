@@ -4,6 +4,7 @@ import { Plataforma } from '../model/Plataforma.class';
 import { Serie } from "../model/Serie.class";
 import { ApiService } from './api.service';
 import { UsuarioService } from './usuario.service';
+import Swal from 'sweetalert2'
 
 @Injectable({
   providedIn: 'root'
@@ -82,15 +83,21 @@ export class MisSeriesService {
 
         let serieNueva = this.armarSerie(serie);
 
-        // agregar lista en BD
-
         const nombreUsuario = this.usuarioService.usuarioLogeado.usuario;
         this.http.post(`${this.url}/${nombreUsuario}`, serieNueva, this.httpOptions())
           .subscribe({
-            next: (resp) => {
-              console.log(resp)
+            next: (resp: any) => {
               // agrega la lista en el array que esta en local asi evito hacer un GET+
-              this.usuarioService.agregarSerieALista(serieNueva);
+              this.usuarioService.agregarSerieALista(resp);
+
+              Swal.fire({
+                position: 'top',
+                title: 'Serie agregada!!',
+                showConfirmButton: false,
+                timer: 1500,
+                background: '#686868dd',
+                color: '#FF4C29'
+              })
             },
             error: (err) => {
               console.log(err);
