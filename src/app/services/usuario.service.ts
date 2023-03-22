@@ -25,7 +25,7 @@ export class UsuarioService {
   constructor(private http: HttpClient) { }
 
   get usuarioLogeado(): Usuario {
-    return this._usuarioLogeado; // atento por si necesito spread operator
+    return this._usuarioLogeado;
   }
 
   setearUsuarioLogeado(usuario: Usuario) {
@@ -89,6 +89,11 @@ export class UsuarioService {
 
   actualizarRelacion(relacion: Object) {
     return this.http.put(`${this.url}/relaciones`, relacion, this.httpOptions())
+            .pipe(catchError(this.handlerException));
+  }
+
+  cambiarContrasenia(datosNuevos: any) {
+    return this.http.put(`${this.url}/usuarios/${datosNuevos.usuario}`, datosNuevos, this.httpOptions())
             .pipe(catchError(this.handlerException));
   }
 }

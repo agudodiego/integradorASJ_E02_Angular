@@ -9,20 +9,20 @@
 
       <input class="inputReg" type="text" placeholder="usuario" name="usuario" formControlName="usuario">
       <div class="alerta" *ngIf="formularioRegistro.controls['usuario'].errors && formularioRegistro.controls['usuario'].dirty">
-        <p *ngIf="formularioRegistro.controls['usuario'].errors['required']">⛔ Campo requerido</p>
-        <p *ngIf="formularioRegistro.controls['usuario'].errors['minlength']">⛔ Longuitud minima 5 caracteres</p>
+        <p *ngIf="formularioRegistro.controls['usuario'].errors['required']">Campo requerido</p>
+        <p *ngIf="formularioRegistro.controls['usuario'].errors['minlength']">Longuitud minima 5 caracteres</p>
       </div>
 
       <input class="inputReg" type="password" placeholder="contraseña" name="pass" formControlName="pass">
       <div class="alerta" *ngIf="formularioRegistro.controls['pass'].errors && formularioRegistro.controls['pass'].dirty">
-        <p *ngIf="formularioRegistro.controls['pass'].errors['required']">⛔ Campo requerido</p>
-        <p *ngIf="formularioRegistro.controls['pass'].errors['minlength']">⛔ Longuitud minima 8 caracteres</p>
+        <p *ngIf="formularioRegistro.controls['pass'].errors['required']">Campo requerido</p>
+        <p *ngIf="formularioRegistro.controls['pass'].errors['minlength']">Longuitud minima 8 caracteres</p>
       </div>
 
       <input class="inputReg" type="email" placeholder="email" name="email" formControlName="email">
       <div class="alerta" *ngIf="formularioRegistro.controls['email'].errors && formularioRegistro.controls['email'].dirty">
-        <p *ngIf="formularioRegistro.controls['email'].errors['required']">⛔ Campo requerido</p>
-        <p *ngIf="formularioRegistro.controls['email'].errors['email']">⛔ Debe ser una direccion valida</p>
+        <p *ngIf="formularioRegistro.controls['email'].errors['required']">Campo requerido</p>
+        <p *ngIf="formularioRegistro.controls['email'].errors['email']">Debe ser una direccion valida</p>
       </div>
 
       <button class="btnRegistrarse" [disabled]="formularioRegistro.invalid" (click)="registrarse()">registrarse</button>

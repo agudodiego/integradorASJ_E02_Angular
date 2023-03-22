@@ -38,13 +38,65 @@ header {
 }
 
 #usuario-logeado {
+  position: relative;
   display: flex;
   align-items: center;
+}
+
+#upContrasenia {
+  position: absolute;
+  padding: .5em;
+  z-index: 20;
+  bottom: -280px;
+  right: -75px;
+  width: 300px;
+  background-color: var(--dark-color);
+  border-radius: 8px;
+  border: 1px solid whitesmoke;
+}
+
+#btnCambiar, #btnCancelar {
+  color: var(--orange-color);
+  border: none;
+  cursor: pointer;
+  border: 1px solid var(--orange-color);
+  border-radius: 8px;
+}
+
+#btnCambiar:hover, #btnCancelar:hover {
+  color: whitesmoke;
+  background-color: var(--orange-color);
+}
+
+input::placeholder {
+  color: var(--darkest-color);
+}
+
+#btnCambiar:disabled {
+  color: #aaa;
+  border: 1px solid #aaa;
+  letter-spacing: 0;
+  cursor: auto;
+}
+
+#btnCambiar:disabled:hover {
+  
+}
+
+input:focus {
+  border-bottom: 1px solid var(--orange-color);
+  color: var(--orange-color);
+}
+
+form>p {
+  margin-left: 15px;
+  color: whitesmoke;
 }
 
 #avatar {
   width: 40px;
   margin-right: .5em;
+  cursor: pointer;
 }
 
 #btnLogout {

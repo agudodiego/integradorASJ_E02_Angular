@@ -5,9 +5,19 @@
   <header>
     <img id="logo" src="assets/sapp_logo.svg" alt="logo s-app">
     <div id="usuario-logeado">
-      <img id="avatar" src="assets/avatar.svg" alt="avatar">
+      <img id="avatar" src="assets/avatar.svg" alt="avatar" (click)="switchCambio(true)">
       <h4 id="nombre-usuario">{{usuario.usuario}}</h4>
       <img id="btnLogout" src="assets/logout.svg" alt="logout logo" (click)="logOut()">
+
+      <form #formCont="ngForm" id="upContrasenia" autocomplete="off" *ngIf="switchCambiaContrasenia" (ngSubmit)="onSubmit(formCont)" class="animate__animated animate__slideInDown">
+          <input type="password" required minlength="8" placeholder="contraseña" name="contrasenia" ngModel>
+          <p *ngIf="formCont.controls['contrasenia']?.invalid && formCont.controls['contrasenia']?.touched">Longuitud minima 8 caracteres</p>
+          <input type="text" required required minlength="8" placeholder="nueva contraseña" name="contNueva" ngModel>
+          <p *ngIf="formCont.controls['contNueva']?.invalid && formCont.controls['contNueva']?.touched">Longuitud minima 8 caracteres</p>
+          <input id="btnCambiar" type="submit" value="cambiar contraseña" [disabled]="formCont.invalid">
+          <input id="btnCancelar" type="button" value="cancelar" (click)="switchCambio(false)">
+      </form>
+
     </div>
   </header>
 

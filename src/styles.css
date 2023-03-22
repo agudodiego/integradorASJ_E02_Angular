@@ -89,3 +89,9 @@ input {
 .alerta {
   color: whitesmoke;
 }
+
+@media (max-width: 600px) {
+  #contenedor-login, #contenedor-registro {
+    width: 340px;
+  }
+}
