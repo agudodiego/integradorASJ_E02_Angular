@@ -73,6 +73,7 @@ input::placeholder {
 }
 
 #btnCambiar:disabled {
+  background-color: var(--darkest-color);
   color: #aaa;
   border: 1px solid #aaa;
   letter-spacing: 0;
