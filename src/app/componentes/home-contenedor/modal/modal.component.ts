@@ -111,7 +111,17 @@ export class ModalComponent {
             })
           }
         },
-        error: (error) => { console.log(error) }
+        error: (error) => { 
+          console.log(error);
+          Swal.fire({
+            position: 'top',
+            title: 'Ha ocurrido un error!!',
+            showConfirmButton: false,
+            timer: 1500,
+            background: '#686868dd',
+            color: '#FF4C29'
+          }) 
+        }
       });
     this.homeService.switchearModal(false);
   }
